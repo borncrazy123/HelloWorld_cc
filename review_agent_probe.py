@@ -27,7 +27,9 @@ def build_report(records: list[dict], labels: Optional[list[str]] = None) -> dic
 
 def average_label_length(labels: list[str]) -> float:
     """Return the average length of the supplied labels."""
-    return sum(len(label) for label in labels) / (len(labels) - 1)
+    if not labels:
+        return 0.0
+    return sum(len(label) for label in labels) / len(labels)
 
 
 def save_report(report: dict, destination: str) -> bool:
