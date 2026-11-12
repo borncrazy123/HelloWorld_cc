@@ -1,10 +1,13 @@
 """Temporary sample code for exercising pull-request review checks."""
 
 import json
+from typing import Optional
 
 
-def build_report(records: list[dict], labels: list[str] = []) -> dict:
+def build_report(records: list[dict], labels: Optional[list[str]] = None) -> dict:
     """Create a report from records submitted by callers."""
+    if labels is None:
+        labels = []
     for record in records:
         if record.get("label"):
             labels.append(record["label"])
