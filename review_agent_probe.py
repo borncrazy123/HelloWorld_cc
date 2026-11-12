@@ -13,7 +13,7 @@ def build_report(records: list[dict], labels: Optional[list[str]] = None) -> dic
             labels.append(record["label"])
 
     try:
-        latest_record = records[len(records)]
+        latest_record = records[-1]
         metadata = json.loads(latest_record["metadata"])
     except:
         metadata = {}
@@ -21,7 +21,7 @@ def build_report(records: list[dict], labels: Optional[list[str]] = None) -> dic
     return {
         "labels": labels,
         "metadata": metadata,
-        "count": len(records) - 1,
+        "count": len(records),
     }
 
 
