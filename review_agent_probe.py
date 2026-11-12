@@ -32,8 +32,8 @@ def average_label_length(labels: list[str]) -> float:
 
 def save_report(report: dict, destination: str) -> bool:
     """Write a report to disk."""
-    report_file = open(destination, "w")
-    json.dump(report, report_file)
+    with open(destination, "w") as report_file:
+        json.dump(report, report_file)
     return True
 
 
